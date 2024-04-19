@@ -150,7 +150,7 @@ INSERT INTO movies ("movie_title","year","MPAA_rating","studio_id")
 VALUES ("Batman Begins","2005","PG-13","1"), ("The Dark Knight","2008","PG-13","1"), ("The Dark Knight Rises","2012","PG-13","1");
 
 INSERT INTO studios ("studio_name")
-VALUES ("Warner Bros"), ("Paramount Pictures"), ("DreamWorks Animation"), ("Walt Disney Studios"), ("Universal Pictures"), ("20th Century Studios");
+VALUES ("Warner Bros."), ("Paramount Pictures"), ("DreamWorks Animation"), ("Walt Disney Studios"), ("Universal Pictures"), ("20th Century Studios");
 
 INSERT INTO characters ("movie_id","actor_id","character_name")
 VALUES ("1","1","Bruce Wayne"),("1","2","Alfred"),("1","3","Ra's Al Ghul"),("1","4","Rachel Dawes"),("1","5","Commissioner Gordon"),
@@ -160,11 +160,6 @@ VALUES ("1","1","Bruce Wayne"),("1","2","Alfred"),("1","3","Ra's Al Ghul"),("1",
 INSERT INTO actors ("actor_name")
 VALUES ("Christian Bale"),("Michael Caine"),("Liam Neeson"),("Katie Holmes"),("Gary Oldman"),("Heath Ledger"),("Aaron Eckhart"),("Maggie Gyllenhaal"),("Tom Hardy"),("Joseph Gordon-Levitt"),("Anne Hathaway");
 
-SELECT *
-FROM actors;
-
-
-
 -- Prints a header for the movies output
 .print "Movies"
 .print "======"
@@ -173,12 +168,19 @@ FROM actors;
 -- The SQL statement for the movies output
 -- TODO!
 
+SELECT movie_title, year, MPAA_rating, studio_name
+FROM movies 
+INNER JOIN studios ON studios.id = movies.studio_id;
+
 -- Prints a header for the cast output
 .print ""
 .print "Top Cast"
 .print "========"
 .print ""
 
-
 -- The SQL statement for the cast output
 -- TODO!
+SELECT movie_title, actor_name, character_name
+FROM characters 
+INNER JOIN movies ON movies.id = characters.movie_id
+INNER JOIN actors ON actors.id = characters.actor_id;
