@@ -112,9 +112,9 @@
 
 -- Drop existing tables, so you'll start fresh each time this script is run.
 -- TODO!
-DROP TABLE IF EXISTS movies
-DROP TABLE IF EXISTS studios
-DROP TABLE IF EXISTS characters
+DROP TABLE IF EXISTS movies;
+DROP TABLE IF EXISTS studios;
+DROP TABLE IF EXISTS characters;
 DROP TABLE IF EXISTS actors;
 
 -- Create new tables, according to your domain model
@@ -146,6 +146,24 @@ CREATE TABLE actors (
 -- Insert data into your database that reflects the sample data shown above
 -- Use hard-coded foreign key IDs when necessary
 -- TODO!
+INSERT INTO movies ("movie_title","year","MPAA_rating","studio_id")
+VALUES ("Batman Begins","2005","PG-13","1"), ("The Dark Knight","2008","PG-13","1"), ("The Dark Knight Rises","2012","PG-13","1");
+
+INSERT INTO studios ("studio_name")
+VALUES ("Warner Bros"), ("Paramount Pictures"), ("DreamWorks Animation"), ("Walt Disney Studios"), ("Universal Pictures"), ("20th Century Studios");
+
+INSERT INTO characters ("movie_id","actor_id","character_name")
+VALUES ("1","1","Bruce Wayne"),("1","2","Alfred"),("1","3","Ra's Al Ghul"),("1","4","Rachel Dawes"),("1","5","Commissioner Gordon"),
+("2","1","Bruce Wayne"),("2","6","Joker"),("2","7","Harvey Dent"),("2","2","Alfred"),("2","8","Rachel Dawes"),
+("3","1","Bruce Wayne"),("3","5","Commissioner Gordon"),("3","9","Bane"),("3","10","John Blake"),("3","11","Selina Kyle");
+
+INSERT INTO actors ("actor_name")
+VALUES ("Christian Bale"),("Michael Caine"),("Liam Neeson"),("Katie Holmes"),("Gary Oldman"),("Heath Ledger"),("Aaron Eckhart"),("Maggie Gyllenhaal"),("Tom Hardy"),("Joseph Gordon-Levitt"),("Anne Hathaway");
+
+SELECT *
+FROM actors;
+
+
 
 -- Prints a header for the movies output
 .print "Movies"
